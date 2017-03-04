@@ -1,0 +1,18 @@
+Package: ggsurvey
+Type: Package
+Title: Wrapper for ggplot2 with complex survey objects
+Version: 0.0.1
+Author: Taylor Long
+Maintainer: Taylor Long <ltlong@umich.edu>
+Description: This package contains a number of wrapper functions, taking svystat
+    objects produced with the 'survey' package and returning ggplot objects.
+License: MIT
+Depends:
+    ggplot2,
+    reshape2,
+    survey,
+    foreign,
+    grid
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
