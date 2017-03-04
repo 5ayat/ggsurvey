@@ -30,7 +30,7 @@ gg.svystat(tab,"prs", percent = TRUE, color='red')
 ```
 
 ```{r, message = FALSE}
-tab <- svyby(~i_outdoors, ~prs, dstrat, svymean, na.rm=TRUE)
+tab <- svyby(~i_outdoor, ~prs, dstrat, svymean, na.rm=TRUE)
 gg.svyby(tab, color = pal, percent = TRUE, legend.title = "Importance") + 
   ggtitle('\nImportance of Outdoor Activities\n') + 
   ylab('Percent\n') + xlab('\nPRS Status')
@@ -51,27 +51,27 @@ gg.svyby(tab, color = pal, percent = TRUE, drop.level = 'No', legend.position = 
 ```
 
 ```{r, message = FALSE}
-tab <- svyby(~i_outdoors, ~camp+gender, dstrat, svymean, na.rm=TRUE)
+tab <- svyby(~i_outdoor, ~camp+gender, dstrat, svymean, na.rm=TRUE)
 gg.svyby(tab, color = pal, percent = TRUE, error.bar.bounds = TRUE) + 
   ggtitle('\nOutdoor Importance by Camp and Gender\n') + 
   ylab('Percent\n') + facet_wrap(~gender, ncol=1)
 ```
 
 ```{r, message = FALSE, warning=FALSE}
-tab <- svyby(~i_outdoors, ~gender, dstrat, svymean, na.rm=TRUE)
+tab <- svyby(~i_outdoor, ~gender, dstrat, svymean, na.rm=TRUE)
 gg.svyby(tab, color = pal, percent = TRUE, legend.title = "Importance") + 
   ggtitle('\nImportance of Outdoor Activities\n') + 
   ylab('Percent\n') + scale_fill_brewer(palette="Set1")
 ```
 
 ```{r, warning=FALSE,message=FALSE}
-tab <- svyby(~i_outdoors, ~camp, dstrat, svymean, na.rm=TRUE)
+tab <- svyby(~i_outdoor, ~camp, dstrat, svymean, na.rm=TRUE)
 gg.svy.likert(tab, color=pal, legend.position = 'right', order=TRUE, line = 9) +
   ggtitle('\nLikert Plot of Importance of Outdoors\n')
 ```
 
 ```{r, warning=FALSE,message=FALSE}
-tab <- svyby(~i_outdoors, ~s_outdoors, dstrat, svymean, na.rm=TRUE)
+tab <- svyby(~i_outdoor, ~s_outdoors, dstrat, svymean, na.rm=TRUE)
 gg.svy.likert(tab, color=pal, legend.position = 'right', line = 9) +
   ggtitle('\nLikert Plot of Importance by Satisfaction of Outdoors\n')
 ```
