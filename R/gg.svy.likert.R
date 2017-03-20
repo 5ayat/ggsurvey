@@ -20,7 +20,7 @@ gg.svy.likert <- function(tab,
                           colors = NULL,
                           line=6,
                           legend.position="bottom",
-                          legend.name="Percent"){
+                          legend.name="Response"){
 
   se.tab <- tab[, substr(names(tab), 1, 3 )== "se."]
   data.tab<-tab[,1:(length(tab)-length(se.tab))]
@@ -117,7 +117,7 @@ gg.svy.likert <- function(tab,
 
   p <-  ggplot(data=mdfr) +
     geom_segment(aes(x = category, y = start, xend = category, yend = start+value, colour = variable), size = line) +
-    scale_color_manual(legend.name, values = pal, guide="legend") +
+    scale_color_manual(legend.name, values = pal, guide="legend") + theme_gray(base_size = 16) +
     geom_hline(yintercept = 0, color =c("#646464")) +
     coord_flip() + labs(title="", y="",x="") +
     scale_y_continuous(breaks=seq(mymin,mymax,25), limits=c(mymin,mymax)) +

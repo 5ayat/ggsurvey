@@ -43,11 +43,11 @@ gg.svystat <- function(tab, var.name, basic=FALSE, color=NULL, percent=FALSE, er
   if(basic == TRUE){
     p <- ggplot(data=tab, aes(x = variable, y = value))
   } else if(error.bars == FALSE){
-    p <- ggplot(data=tab, aes(x = variable, y = value)) + geom_bar(stat="identity", fill = primary) +
+    p <- ggplot(data=tab, aes(x = variable, y = value)) + geom_bar(stat="identity", fill = primary) + theme_gray(base_size = 16) +
       theme(panel.background = element_rect(fill = "#ffffff")) + ylab("") + xlab("") +
       theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
   } else {
-    p <- ggplot(data=tab, aes(x = variable, y = value)) + geom_bar(stat="identity", fill = primary) +
+    p <- ggplot(data=tab, aes(x = variable, y = value)) + geom_bar(stat="identity", fill = primary) + theme_gray(base_size = 16) +
       theme(panel.background = element_rect(fill = "#ffffff")) + ylab("") + xlab("") +
       geom_errorbar(aes(ymax = value + 1.96*se, ymin = value - 1.96*se), width=0.2,color="grey20") +
       theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
