@@ -20,7 +20,7 @@ gg.svy.likert <- function(tab,
                           colors = NULL,
                           line=6,
                           legend.position="bottom",
-                          legend.name="Response"){
+                          legend.name=""){
 
   se.tab <- tab[, substr(names(tab), 1, 3 )== "se."]
   data.tab<-tab[,1:(length(tab)-length(se.tab))]
@@ -123,6 +123,6 @@ gg.svy.likert <- function(tab,
     scale_y_continuous(breaks=seq(mymin,mymax,25), limits=c(mymin,mymax)) +
     theme(panel.background = element_rect(fill = "#ffffff"),
           panel.grid.major = element_line(colour = "#CBCBCB")) +
-    theme(legend.position = legend.position)
+    theme(legend.position = legend.position) + theme(plot.title = element_text(hjust = 0.5)) +  guides(colour = guide_legend(override.aes = list(size=13)))
   return(p)
 }
