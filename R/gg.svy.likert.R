@@ -18,11 +18,12 @@
 gg.svy.likert <- function(tab,
                           order = FALSE,
                           colors = NULL,
-                          line=6,
+                          line=8,
                           legend.position="bottom",
                           legend.name="",
                           wrap.levels = FALSE,
-                          level.width = 15){
+                          level.width = 15,
+                          base_size = 11){
 
   se.tab <- tab[, substr(names(tab), 1, 3 )== "se."]
   data.tab<-tab[,1:(length(tab)-length(se.tab))]
@@ -120,13 +121,14 @@ gg.svy.likert <- function(tab,
   if(wrap.levels == FALSE){
     p <-  ggplot(data=mdfr) +
       geom_segment(aes(x = category, y = start, xend = category, yend = start+value, colour = variable), size = line) +
-      scale_color_manual(legend.name, values = pal, guide="legend") + theme_gray(base_size = 16) +
+      scale_color_manual(legend.name, values = pal, guide="legend") + theme_gray(base_size = base_size) +
       geom_hline(yintercept = 0, color =c("#646464")) +
       coord_flip() + labs(title="", y="",x="") +
       scale_y_continuous(breaks=seq(mymin,mymax,25), limits=c(mymin,mymax)) +
       theme(panel.background = element_rect(fill = "#ffffff"),
             panel.grid.major = element_line(colour = "#CBCBCB")) +
-      theme(legend.position = legend.position) +  guides(colour = guide_legend(override.aes = list(size=13))) + theme(plot.title = element_text(hjust = 0.5))
+      theme(legend.position = legend.position) +  guides(colour = guide_legend(override.aes = list(size=8))) + theme(plot.title = element_text(hjust = 0.5)) +
+      theme(axis.text.y  = element_text(hjust=0, angle=0)) + ylim(-100, 100)
   }
 
   if(wrap.levels == TRUE){
@@ -138,13 +140,14 @@ gg.svy.likert <- function(tab,
 
     p <-  ggplot(data=mdfr) +
       geom_segment(aes(x = category, y = start, xend = category, yend = start+value, colour = variable), size = line) +
-      scale_color_manual(legend.name, values = pal, guide="legend", labels = some.levels) + theme_gray(base_size = 16) +
+      scale_color_manual(legend.name, values = pal, guide="legend", labels = some.levels) + theme_gray(base_size = base_size) +
       geom_hline(yintercept = 0, color =c("#646464")) +
       coord_flip() + labs(title="", y="",x="") +
       scale_y_continuous(breaks=seq(mymin,mymax,25), limits=c(mymin,mymax)) +
       theme(panel.background = element_rect(fill = "#ffffff"),
             panel.grid.major = element_line(colour = "#CBCBCB")) +
-      theme(legend.position = legend.position) +  guides(colour = guide_legend(override.aes = list(size=13))) + theme(plot.title = element_text(hjust = 0.5))
+      theme(legend.position = legend.position) +  guides(colour = guide_legend(override.aes = list(size=8))) + theme(plot.title = element_text(hjust = 0.5)) +
+      theme(axis.text.y  = element_text(hjust=0, angle=0)) + ylim(-100, 100)
   }
 
   return(p)
