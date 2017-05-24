@@ -5,9 +5,12 @@
 #' @param tab The \code{svystat} object from the function \code{svymean}.
 #' @param order Plot bars in decending order? Do not use if factor is already in specific order, e.g. survey waves.
 #' @param color A color list generated with \code{\link{gg.svy.colors}} (no quotes) or Hex color codes (in quotes).
-#' @param line Line width. Default is 6.
-#' @param legend.position Legend position.
-#' @param legend.name Name for legend.
+#' @param line Line width. Default is 8. Adjust according to number of items and plot height.
+#' @param legend.position Legend position. Default is bottom.
+#' @param legend.name Name for legend. Deafult is no name.
+#' @param wrap.levels If TRUE wrap long text in legend.
+#' @param level.width Number of characters to use in wrapping levels.
+#' @param base_size Font size for ggplot() theme. Default is 11, and reccomended for documents; 16 is reccomended for Beamer presentations.
 #'
 #' @return A ggplot object.
 #'

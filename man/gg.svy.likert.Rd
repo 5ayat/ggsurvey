@@ -13,11 +13,17 @@ gg.svy.likert(tab, order = FALSE, colors = NULL, line = 8,
 
 \item{order}{Plot bars in decending order? Do not use if factor is already in specific order, e.g. survey waves.}
 
-\item{line}{Line width. Default is 6.}
+\item{line}{Line width. Default is 8. Adjust according to number of items and plot height.}
 
-\item{legend.position}{Legend position.}
+\item{legend.position}{Legend position. Default is bottom.}
 
-\item{legend.name}{Name for legend.}
+\item{legend.name}{Name for legend. Deafult is no name.}
+
+\item{wrap.levels}{If TRUE wrap long text in legend.}
+
+\item{level.width}{Number of characters to use in wrapping levels.}
+
+\item{base_size}{Font size for ggplot() theme. Default is 11, and reccomended for documents; 16 is reccomended for Beamer presentations.}
 
 \item{color}{A color list generated with \code{\link{gg.svy.colors}} (no quotes) or Hex color codes (in quotes).}
 }
