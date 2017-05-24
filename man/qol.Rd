@@ -35,4 +35,3 @@ Data from a survey of four Palestinian refugee camps in Lebanon.
 }
 }
 \keyword{datasets}
-

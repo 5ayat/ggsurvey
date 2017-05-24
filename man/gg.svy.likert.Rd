@@ -4,8 +4,9 @@
 \alias{gg.svy.likert}
 \title{Generates likert plot based on svyby stat}
 \usage{
-gg.svy.likert(tab, order = FALSE, colors = NULL, line = 6,
-  legend.position = "bottom", legend.name = "Percent")
+gg.svy.likert(tab, order = FALSE, colors = NULL, line = 8,
+  legend.position = "bottom", legend.name = "", wrap.levels = FALSE,
+  level.width = 15, base_size = 11)
 }
 \arguments{
 \item{tab}{The \code{svystat} object from the function \code{svymean}.}
@@ -26,4 +27,3 @@ A ggplot object.
 \description{
 Creates a likert-type plot.
 }
-

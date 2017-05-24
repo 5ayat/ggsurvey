@@ -33,4 +33,3 @@ It is necessary to specify the variable name used in the previous call to \code{
 this is not stored in the \code{svystat} object. This is used to get factor levels. Use
 \code{basic = TRUE} to apply additional custom ggplot aesthetics.
 }
-

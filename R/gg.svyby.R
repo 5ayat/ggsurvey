@@ -10,6 +10,10 @@
 #' @param color A color list generated with \code{\link{gg.svy.colors}} (no quotes) or a Hex color codes (in quotes).
 #' @param percent If TRUE, multiplies all decimal values by 100.
 #' @param error.bars If TRUE, adds error bars for 95\% confidence intervals.
+#' @param outcome.factor Use TRUE for factor outcomes and FALSE for numeric outcomes.
+#' @param legend.position Where to place legend. Default is bottom.
+#' @param error.bar.bounds If TRUE, error bars cannot be less than 0\% or more than 100\%.
+#' @param base_size Font size for ggplot() theme. Default is 11, and reccomended for documents; 16 is reccomended for Beamer presentations.
 #'
 #' @return A ggplot object, with or without additional aesthetics, depending on \code{basic} parameter.
 #'

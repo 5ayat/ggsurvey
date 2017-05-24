@@ -32,4 +32,3 @@ flexible as other color options in R, in that colors are not automatically chose
 input of Hex values reflects the fact that individuals or organizations may already have defined palettes.
 The default values given in this function are from the Feeling Responsive Jekyll theme developed by Phlow.
 }
-

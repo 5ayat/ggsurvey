@@ -2,11 +2,12 @@
 % Please edit documentation in R/gg.svyby.R
 \name{gg.svyby}
 \alias{gg.svyby}
-\title{Generates plot based on svyby stat}
+\title{Generates barplot based on svyby stat}
 \usage{
 gg.svyby(tab, basic = FALSE, color = NULL, percent = FALSE,
   error.bars = TRUE, outcome.factor = TRUE, legend.position = "right",
-  legend.title = "Response", drop.level = NULL, error.bar.bounds = FALSE)
+  legend.title = "Response", drop.level = NULL, error.bar.bounds = FALSE,
+  base_size = 11)
 }
 \arguments{
 \item{tab}{The \code{svystat} object from the function \code{svymean}.}
@@ -18,6 +19,14 @@ gg.svyby(tab, basic = FALSE, color = NULL, percent = FALSE,
 \item{percent}{If TRUE, multiplies all decimal values by 100.}
 
 \item{error.bars}{If TRUE, adds error bars for 95\% confidence intervals.}
+
+\item{outcome.factor}{Use TRUE for factor outcomes and FALSE for numeric outcomes.}
+
+\item{legend.position}{Where to place legend. Default is bottom.}
+
+\item{error.bar.bounds}{If TRUE, error bars cannot be less than 0\% or more than 100\%.}
+
+\item{base_size}{Font size for ggplot() theme. Default is 11, and reccomended for documents; 16 is reccomended for Beamer presentations.}
 }
 \value{
 A ggplot object, with or without additional aesthetics, depending on \code{basic} parameter.
@@ -28,4 +37,3 @@ or generate a barblot with additional aesthetics. The \code{color}
 parameter generated with \code{\link{gg.svy.colors}} can be used
 to specify a color mapping.
 }
-
