@@ -4,7 +4,8 @@
 \alias{gg.svy.bubble}
 \title{Takes x-values, y-values, bubble-sizes and color category to make bubble plot from svystat objects.}
 \usage{
-gg.svy.bubble(xtab, ytab, stab, cols, colors, base_size = 11, alpha = 0.3)
+gg.svy.bubble(xtab, ytab, stab, cols, colors, base_size = 11, alpha = 0.3,
+  discrete = FALSE, x.var = NULL, y.var = NULL)
 }
 \arguments{
 \item{xtab}{X-values calculated with svyby().}
@@ -20,6 +21,12 @@ gg.svy.bubble(xtab, ytab, stab, cols, colors, base_size = 11, alpha = 0.3)
 \item{base_size}{Default font size.}
 
 \item{alpha}{Transparency for bubble fill. Default is 0.3.}
+
+\item{discrete}{If TRUE replace numbers on x and y-axes with factor levels. Must also provide x.var and y.var.}
+
+\item{x.var}{A factor for x-axis, e.g. data$x.var.}
+
+\item{y.var}{A factor for x-axis, e.g. data$x.var.}
 }
 \value{
 A ggplot object.
