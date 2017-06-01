@@ -14,13 +14,14 @@
 #' @param legend.position Where to place legend. Default is bottom.
 #' @param error.bar.bounds If TRUE, error bars cannot be less than 0\% or more than 100\%.
 #' @param base_size Font size for ggplot() theme. Default is 11, and reccomended for documents; 16 is reccomended for Beamer presentations.
+#' @param position "dodge" or "stack" (in quotes); default is "dodge."
 #'
 #' @return A ggplot object, with or without additional aesthetics, depending on \code{basic} parameter.
 #'
 #' @export
 
 
-gg.svyby <- function(tab, basic=FALSE, color=NULL, percent=FALSE, error.bars=TRUE,
+gg.svyby <- function(tab, basic=FALSE, position = "dodge", color=NULL, percent=FALSE, error.bars=FALSE,
                 outcome.factor=TRUE, legend.position="right",legend.title="Response",
                 drop.level=NULL, error.bar.bounds = FALSE, base_size = 11){
 
@@ -66,7 +67,7 @@ gg.svyby <- function(tab, basic=FALSE, color=NULL, percent=FALSE, error.bars=TRU
           p <- ggplot(data=m.data.tab, aes(x=m.data.tab[,1],y=value,fill=variable))
         } else if (error.bars == FALSE){
           p <- ggplot(data=m.data.tab, aes(x=m.data.tab[,1],y=value,fill=variable)) + theme_gray(base_size = base_size) +
-            geom_bar(stat="identity", position="dodge") + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
+            geom_bar(stat="identity", position=position) + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
             xlab("") + ylab("Percent\n")  + scale_fill_manual(legend.title, values=pal) +
             theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
         } else if (error.bars == TRUE & error.bar.bounds == FALSE){
@@ -78,7 +79,7 @@ gg.svyby <- function(tab, basic=FALSE, color=NULL, percent=FALSE, error.bars=TRU
             theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
         } else {
           p <- ggplot(data=m.data.tab, aes(x=m.data.tab[,1],y=value, ymin=lower, ymax=upper, fill=variable)) +
-            geom_bar(stat="identity", position="dodge") + theme_gray(base_size = base_size) +
+            geom_bar(stat="identity", position=position) + theme_gray(base_size = base_size) +
             geom_errorbar(position=position_dodge(width = 0.90), width=0.2, stat="identity") +
             theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
             xlab("") + ylab("Percent\n")  + scale_fill_manual(legend.title, values=pal) +
@@ -93,17 +94,17 @@ gg.svyby <- function(tab, basic=FALSE, color=NULL, percent=FALSE, error.bars=TRU
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value))
             } else if (error.bars == FALSE){
               p <- ggplot(data=m.data.tab, aes(x=m.data.tab[,1],y=value)) + theme_gray(base_size = base_size) +
-                geom_bar(stat="identity", position="dodge", fill=pal) + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
+                geom_bar(stat="identity", position=position, fill=pal) + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("Mean") + theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
             } else if (error.bars == TRUE & error.bar.bounds == FALSE){
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value, ymin=value-1.96*se, ymax=value+1.96*se)) +
-                geom_bar(stat="identity", position="dodge", fill=pal) + theme_gray(base_size = base_size) +
+                geom_bar(stat="identity", position=position, fill=pal) + theme_gray(base_size = base_size) +
                 geom_errorbar(position=position_dodge(width = 0.90), width=0.2, stat="identity") +
                 theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("Mean") + theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
             } else {
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value, ymin=lower, ymax=upper)) +
-                geom_bar(stat="identity", position="dodge", fill=pal) + theme_gray(base_size = base_size) +
+                geom_bar(stat="identity", position=position, fill=pal) + theme_gray(base_size = base_size) +
                 geom_errorbar(position=position_dodge(width = 0.90), width=0.2, stat="identity") +
                 theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("Mean") + theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
@@ -115,19 +116,19 @@ gg.svyby <- function(tab, basic=FALSE, color=NULL, percent=FALSE, error.bars=TRU
             p <- ggplot(data=m.data.tab, aes(x=variable,y=value, fill=fill.by))
           } else if (error.bars == FALSE){
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value, fill=fill.by)) + theme_gray(base_size = base_size) +
-                geom_bar(stat="identity", position="dodge") + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
+                geom_bar(stat="identity", position=position) + theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("") + scale_fill_manual(legend.title, values=pal) +
                 theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
             } else if (error.bars == TRUE & error.bar.bounds == FALSE){
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value, ymin=value-1.96*se, ymax=value+1.96*se, fill=fill.by)) +
-                geom_bar(stat="identity", position="dodge") + theme_gray(base_size = base_size) +
+                geom_bar(stat="identity", position=position) + theme_gray(base_size = base_size) +
                 geom_errorbar(position=position_dodge(width = 0.90), width=0.2, stat="identity") +
                 theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("")  + scale_fill_manual(legend.title, values=pal) +
                 theme(panel.grid.major.y = element_line(colour="grey80", size=0.2))
             } else {
               p <- ggplot(data=m.data.tab, aes(x=variable,y=value, ymin=lower, ymax=upper, fill = fill.by)) +
-                geom_bar(stat="identity", position="dodge") + theme_gray(base_size = base_size) +
+                geom_bar(stat="identity", position=position) + theme_gray(base_size = base_size) +
                 geom_errorbar(position=position_dodge(width = 0.90), width=0.2, stat="identity") +
                 theme(panel.background = element_rect(fill = "#ffffff")) + theme(legend.position=legend.position) +
                 xlab("") + ylab("")+ scale_fill_manual(legend.title, values=pal) +
